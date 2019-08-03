@@ -17,6 +17,8 @@ target/
 .idea
 *.iws
 *.iml
+*.png
+
 *.ipr
 
 ### NetBeans ###
@@ -29,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/uploads
