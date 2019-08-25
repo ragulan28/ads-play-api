@@ -1,7 +1,9 @@
 package com.ragul.adsplayapi.Controller;
 
 import com.ragul.adsplayapi.Model.Company;
+import com.ragul.adsplayapi.Model.Game;
 import com.ragul.adsplayapi.Service.CompanyService;
+import com.ragul.adsplayapi.Service.GameService;
 import com.ragul.adsplayapi.payload.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/api/company")
 public class CompanyController {
     @Autowired
     CompanyService companyService;
+    @Autowired
+    GameService gameService;
 
     @PostMapping("")
     public ResponseEntity<ApiResponse<Company>> uploadFile(@RequestBody Company company) {
@@ -29,6 +33,13 @@ public class CompanyController {
     public ResponseEntity<ApiResponse<Company>> findById(@PathVariable Long id) {
         Company company = companyService.findById(id);
         return new ResponseEntity<>(new ApiResponse<>(company), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/game")
+    public ResponseEntity<ApiResponse<List<Game>>> findGameByComapnyId(@PathVariable Long id) {
+        Company company = companyService.findById(id);
+        List<Game> games = this.gameService.findByCompany(company);
+        return new ResponseEntity<>(new ApiResponse<>(games), HttpStatus.OK);
     }
 
     @GetMapping("")

@@ -29,6 +29,7 @@ public class CompanyService {
         return company.orElseThrow(() -> new ResourceNotFoundException("Company", id.toString()));
     }
 
+
     public void delete(Long id) {
         Company company = this.findById(id);
         gameService.deleteByCompany(company);

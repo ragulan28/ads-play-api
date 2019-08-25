@@ -16,7 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
-@Repository
+@RestController
 @RequestMapping("/api/game")
 public class GameController {
     @Autowired
@@ -47,6 +47,10 @@ public class GameController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<Game>> findById(@PathVariable Long id) {
+        return new ResponseEntity<>(new ApiResponse<>(gameService.findById(id)), HttpStatus.OK);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<Game>> update(@PathVariable Long id) {
         return new ResponseEntity<>(new ApiResponse<>(gameService.findById(id)), HttpStatus.OK);
     }
     @GetMapping("")
