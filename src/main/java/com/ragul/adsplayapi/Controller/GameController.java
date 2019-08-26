@@ -59,6 +59,7 @@ public class GameController {
         game.setImageUrl(fileDownloadUri);
         game.setAdsType(adsType);
         game.setEnable(true);
+
         game.setBannerImageUrl(bannerDownloadUri);
 
         game.setCompany(company);
