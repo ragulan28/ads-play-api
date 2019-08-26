@@ -1,5 +1,6 @@
 package com.ragul.adsplayapi.Model;
 
+import com.ragul.adsplayapi.util.AdsType;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,6 +16,8 @@ public class Game {
     @NotBlank
     private String name;
     @NotBlank
+    private String gameType;
+    @NotBlank
     private String imageUrl;
     @NotBlank
     private String bannerImageUrl;
@@ -23,4 +26,6 @@ public class Game {
     @ManyToOne
     @JoinColumn
     private Company company;
+    private AdsType adsType;
+    private boolean enable = true;
 }
