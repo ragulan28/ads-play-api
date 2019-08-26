@@ -3,7 +3,7 @@ package com.ragul.adsplayapi.util;
 public enum AdsType {
 
 
-    BROWNS(1),
+    BRONZE(1),
     SILVER(2),
     GOLD(3);
 
