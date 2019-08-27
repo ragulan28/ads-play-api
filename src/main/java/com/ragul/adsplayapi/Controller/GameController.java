@@ -63,6 +63,7 @@ public class GameController {
         game.setBannerImageUrl(bannerDownloadUri);
 
         game.setCompany(company);
+        System.out.println(game);
         gameService.save(game);
         return new ResponseEntity<>(new ApiResponse<>(game, HttpStatus.CREATED, "Game create Successfully"), HttpStatus.OK);
 

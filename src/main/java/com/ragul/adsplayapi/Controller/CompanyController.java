@@ -8,7 +8,6 @@ import com.ragul.adsplayapi.payload.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +32,14 @@ public class CompanyController {
     public ResponseEntity<ApiResponse<Company>> findById(@PathVariable Long id) {
         Company company = companyService.findById(id);
         return new ResponseEntity<>(new ApiResponse<>(company), HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse<Company>> login(@RequestParam String email, @RequestParam String password) {
+        Company isValid = this.companyService.login(email, password);
+
+        return new ResponseEntity<>(new ApiResponse<>(isValid, HttpStatus.OK), HttpStatus.OK);
+
     }
 
     @GetMapping("/{id}/game")

@@ -16,5 +16,9 @@ public class Company {
     private Long id;
     @NotBlank
     private String name;
+    @NotBlank
+    private String email;
+    @NotBlank
+    private String password;
 
 }

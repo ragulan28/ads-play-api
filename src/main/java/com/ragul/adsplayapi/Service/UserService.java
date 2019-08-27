@@ -32,4 +32,14 @@ public class UserService {
         User user = this.findById(id);
         userRepository.delete(user);
     }
+
+    public User login(String email, String password) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()){
+             if(user.get().getPassword().equals(password)){
+                 return user.get();
+             }
+        }
+        return null;
+    }
 }

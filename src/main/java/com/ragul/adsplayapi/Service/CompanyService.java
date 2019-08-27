@@ -35,4 +35,14 @@ public class CompanyService {
         gameService.deleteByCompany(company);
         companyRepository.delete(company);
     }
+
+    public Company login(String email, String password) {
+        Optional<Company> user = companyRepository.findByEmail(email);
+        if (user.isPresent()){
+            if(user.get().getPassword().equals(password)){
+                return user.get();
+            }
+        }
+        return null;
+    }
 }

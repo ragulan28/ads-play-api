@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -27,10 +26,18 @@ public class UserController {
     private GameUserRepository gameUserRepository;
 
     @PostMapping("")
-    public ResponseEntity<ApiResponse<User>> playGame(@RequestBody User user) {
+    public ResponseEntity<ApiResponse<User>> create(@RequestBody User user) {
         this.userService.save(user);
 
-        return new ResponseEntity<>(new ApiResponse<>(user, HttpStatus.CREATED, "Game create Successfully"), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse<>(user, HttpStatus.CREATED, "User create Successfully"), HttpStatus.OK);
+
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<ApiResponse<User>> login(@RequestParam String email, @RequestParam String password) {
+        User isValid = this.userService.login(email, password);
+
+        return new ResponseEntity<>(new ApiResponse<>(isValid, HttpStatus.OK), HttpStatus.OK);
 
     }
     @GetMapping("/{id}/game")
