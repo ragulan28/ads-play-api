@@ -41,6 +41,7 @@ public class GameController {
             @RequestParam String gameType,
             @RequestParam String description,
             @RequestParam AdsType adsType) {
+        System.out.println("Request came");
         Company company = companyService.findById(companyId);
         String fileName = fileStorageService.storeFile(file);
         String bannerName = fileStorageService.storeFile(banner);
