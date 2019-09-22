@@ -15,6 +15,7 @@ public class Game {
     private Long id;
     @NotBlank
     private String name;
+    private String description;
     @NotBlank
     private String gameType;
     @NotBlank

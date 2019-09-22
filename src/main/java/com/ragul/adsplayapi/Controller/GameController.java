@@ -39,6 +39,7 @@ public class GameController {
             @RequestParam() String name,
             @RequestParam() Long companyId,
             @RequestParam String gameType,
+            @RequestParam String description,
             @RequestParam AdsType adsType) {
         Company company = companyService.findById(companyId);
         String fileName = fileStorageService.storeFile(file);
@@ -59,6 +60,7 @@ public class GameController {
         game.setImageUrl(fileDownloadUri);
         game.setAdsType(adsType);
         game.setEnable(true);
+        game.setDescription(description);
 
         game.setBannerImageUrl(bannerDownloadUri);
 
