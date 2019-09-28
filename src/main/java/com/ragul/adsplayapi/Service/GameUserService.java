@@ -38,7 +38,7 @@ public class GameUserService {
         return game.orElseThrow(() -> new ResourceNotFoundException("Game", id.toString()));
     }
 
-    public List<GameUser> findBCompanyId(Long id) {
+    public List<GameUser> findByCompanyId(Long id) {
 
         Company company = this.companyService.findById(id);
         List<Game> games = this.gameService.findByCompany(company);
@@ -51,5 +51,11 @@ public class GameUserService {
     public List<GameUser> findByUserId(Long id) {
         User user = this.userService.findById(id);
         return this.gameUserRepository.findAllByUser(user);
+    }
+
+    public List<GameUser> findByGameId(Long id) {
+        Game game = this.gameService.findById(id);
+        List<GameUser> gameUsers = gameUserRepository.findAllByGame(game);
+        return gameUsers;
     }
 }

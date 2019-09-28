@@ -54,7 +54,11 @@ public class GameUserController {
     }
     @GetMapping("/company/{id}")
     public ResponseEntity<ApiResponse<List<GameUser>>> findByCompanyId(@PathVariable Long id) {
-        return new ResponseEntity<>(new ApiResponse<>(gameUserService.findBCompanyId(id)), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse<>(gameUserService.findByCompanyId(id)), HttpStatus.OK);
+    }
+    @GetMapping("/game/{id}")
+    public ResponseEntity<ApiResponse<List<GameUser>>> findByGameId(@PathVariable Long id) {
+        return new ResponseEntity<>(new ApiResponse<>(gameUserService.findByGameId(id)), HttpStatus.OK);
     }
 
 }
