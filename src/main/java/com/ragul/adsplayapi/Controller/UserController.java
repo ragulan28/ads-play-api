@@ -33,6 +33,12 @@ public class UserController {
 
     }
 
+    @GetMapping("")
+    public ResponseEntity<ApiResponse<List<User>>> getAll() {
+        return new ResponseEntity<>(new ApiResponse<>(this.userService.findAll(),HttpStatus.CREATED, "User create Successfully"),HttpStatus.OK);
+
+    }
+
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<User>> login(@RequestParam String email, @RequestParam String password) {
         User isValid = this.userService.login(email, password);
