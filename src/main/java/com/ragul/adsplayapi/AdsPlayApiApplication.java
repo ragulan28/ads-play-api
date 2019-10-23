@@ -18,10 +18,12 @@ public class AdsPlayApiApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Admin admin=new Admin();
-        admin.setName("ragulan");
-        admin.setEmail("ragulan28@gmail.com");
-        admin.setPassword("ragulan28@gmail.com");
-        adminRepository.save(admin);
+        if (!adminRepository.findByEmail("ragulan28@gmail.com").isPresent()) {
+            Admin admin = new Admin();
+            admin.setName("ragulan");
+            admin.setEmail("ragulan28@gmail.com");
+            admin.setPassword("ragulan28@gmail.com");
+            adminRepository.save(admin);
+        }
     }
 }
